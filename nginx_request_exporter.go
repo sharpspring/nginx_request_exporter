@@ -121,6 +121,7 @@ func main() {
 					Namespace: namespace,
 					Name:      metric.Name,
 					Help:      fmt.Sprintf("Nginx request log value for %s", metric.Name),
+					Buckets:   []float64{.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10, 30, 60, 120, 300},
 				}, labels.Names)
 				if err := prometheus.Register(collector); err != nil {
 					if are, ok := err.(prometheus.AlreadyRegisteredError); ok {
